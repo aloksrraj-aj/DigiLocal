@@ -52,31 +52,38 @@ function ProductDetails() {
 
     const addToCart = () => {
 
-        let cart =
-            JSON.parse(localStorage.getItem("cart")) || [];
+    const token = localStorage.getItem("token");
 
-        const exists = cart.find(
-            item => item.id === product.id
-        );
+    if (!token) {
+        toast("Please login to add items to your cart.");
+        return;
+    }
 
-        if (exists) {
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-            toast.error("Product already in cart");
+    const exists = cart.find(
+        item => item.id === product.id
+    );
 
-            return;
+    if (exists) {
 
-        }
+        toast.error("Product already in cart");
 
-        cart.push(product);
+        return;
 
-        localStorage.setItem(
-            "cart",
-            JSON.stringify(cart)
-        );
+    }
 
-        toast.success("Added to Cart");
+    cart.push(product);
 
-    };
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    toast.success("Added to Cart");
+
+};
 
     if (loading) {
 

@@ -58,31 +58,38 @@ function Home() {
 
     const addToCart = (product) => {
 
-        let cart =
-            JSON.parse(localStorage.getItem("cart")) || [];
+    const token = localStorage.getItem("token");
 
-        const alreadyExists = cart.find(
-            item => item.id === product.id
-        );
+    if (!token) {
+        toast("Please login to add items to your cart.");
+        return;
+    }
 
-        if (alreadyExists) {
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-            toast.error("Product already in cart");
+    const alreadyExists = cart.find(
+        item => item.id === product.id
+    );
 
-            return;
+    if (alreadyExists) {
 
-        }
+        toast.error("Product already in cart");
 
-        cart.push(product);
+        return;
 
-        localStorage.setItem(
-            "cart",
-            JSON.stringify(cart)
-        );
+    }
 
-        toast.success("Added to Cart");
+    cart.push(product);
 
-    };
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    toast.success("Added to Cart");
+
+};
 
     const searchProducts = async (text) => {
 

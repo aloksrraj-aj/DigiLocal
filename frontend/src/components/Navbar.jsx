@@ -1,261 +1,148 @@
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-
     const navigate = useNavigate();
 
+    const token = localStorage.getItem("token");
+    const isLoggedIn = !!token;
+
     const logout = () => {
-
         localStorage.removeItem("token");
+        navigate("/");
+    };
 
-        navigate("/login");
+    const linkStyle = {
+        color: "white",
+        textDecoration: "none",
+        fontWeight: "600",
+        padding: "6px 10px",
+        borderRadius: "8px",
+    };
 
+    const buttonStyle = {
+        border: "none",
+        padding: "10px 18px",
+        borderRadius: "10px",
+        fontWeight: "600",
+        cursor: "pointer",
     };
 
     return (
-
         <nav
-
             style={{
-
                 background: "#5F8D7A",
-
                 padding: "18px 5%",
-
                 display: "flex",
-
                 justifyContent: "space-between",
-
                 alignItems: "center",
-
                 flexWrap: "wrap",
-
                 gap: "15px",
-
                 boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-
                 position: "sticky",
-
                 top: 0,
-
-                zIndex: 1000
-
+                zIndex: 1000,
             }}
-
         >
-
             <div
-
                 style={{
-
                     display: "flex",
-
                     alignItems: "center",
-
-                    gap: "12px"
-
+                    gap: "12px",
                 }}
-
             >
-
-                <span
-
-                    style={{
-
-                        fontSize: "32px"
-
-                    }}
-
-                >
-
-                    🛒
-
-                </span>
+                <span style={{ fontSize: "32px" }}>🛒</span>
 
                 <div>
-
                     <h2
-
                         style={{
-
                             margin: 0,
-
-                            color: "white"
-
+                            color: "white",
                         }}
-
                     >
-
                         Bhaia
-
                     </h2>
 
                     <small
-
                         style={{
-
-                            color: "#EAF4EF"
-
+                            color: "#EAF4EF",
                         }}
-
                     >
-
                         Grocery Price Comparison
-
                     </small>
-
                 </div>
-
             </div>
 
             <div
-
                 style={{
-
                     display: "flex",
-
-                    flexWrap: "wrap",
-
-                    justifyContent: "center",
-
                     gap: "15px",
-
-                    alignItems: "center"
-
+                    alignItems: "center",
+                    flexWrap: "wrap",
                 }}
-
             >
-
                 <Link
-
                     to="/"
-
-                    style={{
-
-                        color: "white",
-
-                        textDecoration: "none",
-
-                        fontWeight: "600",
-
-                        padding: "6px 10px",
-
-                        borderRadius: "8px",
-
-                        transition: "0.25s"
-
-                    }}
-
+                    style={linkStyle}
                 >
-
                     Home
-
                 </Link>
 
-                <Link
+                {isLoggedIn ? (
+                    <>
+                        <Link
+                            to="/cart"
+                            style={linkStyle}
+                        >
+                            Cart
+                        </Link>
 
-                    to="/cart"
+                        <Link
+                            to="/profile"
+                            style={linkStyle}
+                        >
+                            Profile
+                        </Link>
 
-                    style={{
+                        <button
+                            onClick={logout}
+                            style={{
+                                ...buttonStyle,
+                                background: "white",
+                                color: "#5F8D7A",
+                            }}
+                        >
+                            Logout
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <button
+                            onClick={() => navigate("/login")}
+                            style={{
+                                ...buttonStyle,
+                                background: "white",
+                                color: "#5F8D7A",
+                            }}
+                        >
+                            Login
+                        </button>
 
-                        color: "white",
-
-                        textDecoration: "none",
-
-                        fontWeight: "600",
-
-                        padding: "6px 10px",
-
-                        borderRadius: "8px",
-
-                        transition: "0.25s"
-
-                    }}
-
-                >
-
-                    Cart
-
-                </Link>
-
-                <Link
-
-                    to="/profile"
-
-                    style={{
-
-                        color: "white",
-
-                        textDecoration: "none",
-
-                        fontWeight: "600",
-
-                        padding: "6px 10px",
-
-                        borderRadius: "8px",
-
-                        transition: "0.25s"
-
-                    }}
-
-                >
-
-                    Profile
-
-                </Link>
-
-                <button
-
-                    onClick={logout}
-
-                    style={{
-
-                        background: "white",
-
-                        color: "#5F8D7A",
-
-                        border: "none",
-
-                        padding: "10px 18px",
-
-                        borderRadius: "10px",
-
-                        fontWeight: "600",
-
-                        cursor: "pointer",
-
-                        transition: "all 0.25s ease"
-
-                    }}
-
-                    onMouseEnter={(e)=>{
-
-                        e.currentTarget.style.transform="translateY(-2px)";
-
-                        e.currentTarget.style.boxShadow="0 8px 18px rgba(0,0,0,0.15)";
-
-                    }}
-
-                    onMouseLeave={(e)=>{
-
-                        e.currentTarget.style.transform="translateY(0)";
-
-                        e.currentTarget.style.boxShadow="none";
-
-                    }}
-
-                >
-
-                    Logout
-
-                </button>
-
+                        <button
+                            onClick={() => navigate("/signup")}
+                            style={{
+                                ...buttonStyle,
+                                background: "#355C4A",
+                                color: "white",
+                                border: "1px solid white",
+                            }}
+                        >
+                            Signup
+                        </button>
+                    </>
+                )}
             </div>
-
         </nav>
-
     );
-
 }
 
 export default Navbar;

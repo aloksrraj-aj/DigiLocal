@@ -12,85 +12,84 @@ import Payment from "./pages/Payment";
 import ProductDetails from "./pages/ProductDetails";
 
 function App() {
-  return (
-    <BrowserRouter>
+    return (
+        <BrowserRouter>
+            <Routes>
 
-      <Routes>
+                {/* PUBLIC ROUTES */}
 
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
 
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+                <Route
+                    path="/product/:id"
+                    element={<ProductDetails />}
+                />
 
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          }
-        />
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
 
-        <Route
-          path="/compare/:id"
-          element={
-            <ProtectedRoute>
-              <Compare />
-            </ProtectedRoute>
-          }
-        />
-<Route
-  path="/payment"
-  element={
-    <ProtectedRoute>
-      <Payment />
-    </ProtectedRoute>
-  }
-/>
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+                <Route
+                    path="/signup"
+                    element={<Signup />}
+                />
 
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
 
-          <Route
-            path="/change-password"
-            element={
-                <ProtectedRoute>
-                <ChangePassword />
-                </ProtectedRoute>
-              }
-        />
-        <Route
-    path="/product/:id"
-    element={
-        <ProtectedRoute>
-            <ProductDetails/>
-        </ProtectedRoute>
-    }
-/>
 
-      </Routes>
+                {/* PROTECTED ROUTES */}
 
-    </BrowserRouter>
-  );
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/cart"
+                    element={
+                        <ProtectedRoute>
+                            <Cart />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/compare/:id"
+                    element={
+                        <ProtectedRoute>
+                            <Compare />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/payment"
+                    element={
+                        <ProtectedRoute>
+                            <Payment />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/change-password"
+                    element={
+                        <ProtectedRoute>
+                            <ChangePassword />
+                        </ProtectedRoute>
+                    }
+                />
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
