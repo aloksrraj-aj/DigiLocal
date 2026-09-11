@@ -59,7 +59,7 @@ function Navbar() {
                             color: "white",
                         }}
                     >
-                        Bhaia
+                        Digilocal
                     </h2>
 
                     <small
