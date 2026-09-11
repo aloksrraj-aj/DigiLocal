@@ -94,7 +94,7 @@ function Signup() {
 
                 <p>
 
-                    Join Bhaia and compare grocery prices easily.
+                    Join Digilocal and compare grocery prices easily.
 
                 </p>
 

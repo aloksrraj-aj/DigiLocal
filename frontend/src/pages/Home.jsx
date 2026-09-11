@@ -165,7 +165,7 @@ function Home() {
                             marginBottom: "15px"
                         }}
                     >
-                        🛒 Bhaia Grocery Comparison
+                        🛒 Digilocal Grocery Comparison
                     </h1>
 
                     <p

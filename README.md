@@ -1,4 +1,4 @@
-# 🛒 Bhaia
+# 🛒 Digilocal
 
 An AI-powered Grocery Price Comparison Platform built using **React**, **FastAPI**, and **PostgreSQL**.
 
@@ -6,7 +6,7 @@ An AI-powered Grocery Price Comparison Platform built using **React**, **FastAPI
 
 ## 📖 Overview
 
-Bhaia helps users compare grocery prices across multiple stores so they can find the best deals before purchasing.
+Digilocal helps users compare grocery prices across multiple stores so they can find the best deals before purchasing.
 
 Users can:
 
@@ -59,7 +59,7 @@ Users can:
 ## 📂 Project Structure
 
 ```
-Bhaia
+Digilocal
 │
 ├── backend
 │   ├── app

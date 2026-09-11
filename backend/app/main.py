@@ -55,6 +55,6 @@ app.include_router(order_router)
 @app.get("/")
 def home():
     return {
-        "message": "Welcome to Bhaia API",
+        "message": "Welcome to Digilocal API",
         "status": "Running Successfully"
     }
